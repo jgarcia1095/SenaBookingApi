@@ -13,7 +13,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
-MongoClient.connect(`mongodb://${config.ddbHost}`, {
+MongoClient.connect(`mongodb+srv://${config.dbHost}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

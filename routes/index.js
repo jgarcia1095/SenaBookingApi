@@ -11,15 +11,15 @@ router.get('/appointments', (req, res, next) => {
 
 router.post('/appointments', (req, res, next) => {
   const { appointmentDate, name, email, hour } = req.body;
-  if (!appointmentDate || !name || !email || !hour) {
+  if (!appointmentDate || !name || !email) {
     return res.status(400).json({
-      message: 'Appointment Date, Name and email are required',
+      message: 'Es necesario diligenciar todos los campos para la cita',
     });
   }
 
   const payload = { appointmentDate, name, email, hour };
   req.collection.insertOne(payload)
-    .then(result => res.json(result.ops[0]))
+    .then(result => res.json(payload))
     .catch(error => res.send(error));
 });
 
